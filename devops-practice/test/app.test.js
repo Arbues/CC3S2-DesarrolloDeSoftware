@@ -4,8 +4,23 @@ const request = require('supertest');
 // Importa la aplicación 'app' desde el archivo 'src/app.js'
 const app = require('../src/app');
 
+// Variable para almacenar el servidor
+let server;
+
 // Define un bloque de pruebas para el endpoint GET '/'
 describe('GET /', () => {
+  // Antes de que se ejecute la prueba, inicia el servidor
+  beforeAll((done) => {
+    server = app.listen(3000, () => {
+      done();
+    });
+  });
+
+  // Después de que la prueba termine, cierra el servidor
+  afterAll((done) => {
+    server.close(done);
+  });
+
   // Define una prueba que verifica que la respuesta del endpoint es "Hello, World!"
   it('should return Hello, World!', async () => {
     // Realiza una solicitud GET al endpoint raíz ('/')
