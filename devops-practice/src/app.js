@@ -1,15 +1,22 @@
-// Importa el módulo 'express', que es un framework para aplicaciones web de Node.js
-const express = require('express');
 
-// Crea una instancia de la aplicación Express
+const express = require('express');
 const app = express();
 
-// Define una ruta GET para el endpoint raíz ('/')
-// Cuando se realiza una solicitud GET a esta ruta, se envía una respuesta con el mensaje "Hello, World!"
 app.get('/', (req, res) => {
-  // Envía una respuesta con el mensaje "Hello, World!"
-  res.send('Hello, World!');
+    res.send('Hello, World!');
 });
 
-// Exporta la instancia de la aplicación 'app' para que pueda ser utilizada en otros módulos
+app.get('/delay', (req, res) => {
+    setTimeout(() => {
+        res.send('This was delayed by 2 seconds');
+    }, 2000);
+});
+
 module.exports = app;
+
+if (require.main === module) {
+    const port = process.env.PORT || 0; 
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
+}
