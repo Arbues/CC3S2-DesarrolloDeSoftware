@@ -2,7 +2,7 @@
   "name": "devops-practice",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "express": "^4.17.1"
