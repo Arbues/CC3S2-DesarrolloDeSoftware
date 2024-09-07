@@ -22,7 +22,7 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      ## working-directory: devops-practice
+      working-directory: devops-practice
 #    - name: Build Docker image 
 #      run: docker build -t devops-practice devops-practice/.
 
