@@ -24,12 +24,21 @@ jobs:
       run: npm install
       working-directory: devops-practice
 
-    - name: Build Docker image 
-      run: docker build -t devops-practice devops-practice/.
+    - name: Check Docker and Docker Compose versions
+      run: |
+        docker --version
+        docker compose version  # Usa docker compose en lugar de docker-compose
+
+    - name: Build and run Docker Compose
+      run: |
+        docker compose up --build -d  # Cambiar docker-compose a docker compose
+      working-directory: devops-practice
 
     - name: Run tests
       run: npm test
       working-directory: devops-practice
     
-    - name: Run Docker container
-      run: docker run -d -p 3001:3001 devops-practice
+    - name: Stop and clean Docker Compose
+      run: |
+        docker compose down  # Cambiar docker-compose a docker compose
+      working-directory: devops-practice
