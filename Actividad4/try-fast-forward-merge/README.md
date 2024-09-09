@@ -1,2 +1,1 @@
-# Mi Proyecto
-Este proyecto es un ejemplo de cómo usar Git.
+# Mi Proyecto v2
