@@ -1,12 +1,23 @@
 
-
 version: '3.8'
 
 services:
   app:
     build: .
     ports:
-      - "3001:3001"  # La aplicación Node.js expuesta en el puerto 3001
+      - "3000:3000"  # La aplicación Node.js expuesta en el puerto 3001
     environment:
       - NODE_ENV=production
     container_name: devops-practice-container  # Contenedor de la aplicación
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"  # Puerto para Prometheus
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3001:3001"  # Puerto para Grafana (ajustado a 3000, ya que Grafana por defecto usa 3000)
