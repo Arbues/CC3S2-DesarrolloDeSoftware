@@ -14,10 +14,10 @@ RUN npm install
 COPY . .
 
 #Expone el puerto 3000
-EXPOSE 3001
+EXPOSE 3000
 
 # Establece una variable de entorno para el puerto
-ENV PORT=3001
+ENV PORT=3000
 
 #Comando para ejecutar la aplicacion
 CMD ["node", "src/app.js"]
