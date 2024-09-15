@@ -16,7 +16,7 @@ El repositorio contiene una aplicación sencilla de Node.js con una API REST bá
 
 ### Estructura del Proyecto
 
-'''
+```
 .
 └── devops-practice
     ├── Dockerfile
@@ -28,7 +28,7 @@ El repositorio contiene una aplicación sencilla de Node.js con una API REST bá
     │   └── app.js
     └── tests
         └── app.test.js
-'''
+```
 
 ### Objetivos de la Actividad
 
@@ -40,22 +40,22 @@ El repositorio contiene una aplicación sencilla de Node.js con una API REST bá
 
 ### 1. Clonar el Repositorio
 
-'''
+```
 git clone https://github.com/Arbues/CC3S2-DesarrolloDeSoftware.git
 cd CC3S2-DesarrolloDeSoftware/Actividad2/devops-practice
-'''
+```
 
 ### 2. Instalación de Dependencias
 
-'''
+```
 npm install
-'''
+```
 
 ### 3. Ejecutar la Aplicación Localmente
 
-'''
+```
 node src/app.js
-'''
+```
 
 La aplicación estará disponible en `http://localhost:3001`.
 
@@ -63,9 +63,9 @@ La aplicación estará disponible en `http://localhost:3001`.
 
 Para ejecutar las pruebas, usa el siguiente comando:
 
-'''
+```
 npm test
-'''
+```
 
 Las pruebas verifican el correcto funcionamiento de la API en los endpoints `/` y `/delay`.
 
@@ -73,23 +73,23 @@ Las pruebas verifican el correcto funcionamiento de la API en los endpoints `/` 
 
 Construir la imagen de Docker:
 
-'''
+```
 docker build -t devops-practice .
-'''
+```
 
 Correr el contenedor:
 
-'''
+```
 docker run -p 3001:3001 devops-practice
-'''
+```
 
 ### 6. Usar Docker Compose para el Despliegue
 
 Para ejecutar la aplicación, junto con los servicios de Prometheus y Grafana, usa el siguiente comando:
 
-'''
+```
 docker compose up --build -d
-'''
+```
 
 Este comando ejecutará los tres servicios:
 
@@ -101,9 +101,9 @@ Este comando ejecutará los tres servicios:
 
 Para realizar un análisis de seguridad de las dependencias del proyecto:
 
-'''
+```
 npm audit
-'''
+```
 
 ### 8. Pipeline de GitHub Actions
 
