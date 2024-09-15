@@ -5,7 +5,7 @@ services:
   app:
     build: .
     ports:
-      - "3000:3000"  # La aplicación Node.js expuesta en el puerto 3001
+      - "3001:3001"  # La aplicación Node.js expuesta en el puerto 3001
     environment:
       - NODE_ENV=production
     container_name: devops-practice-container  # Contenedor de la aplicación
@@ -20,4 +20,4 @@ services:
   grafana:
     image: grafana/grafana
     ports:
-      - "3001:3001"  # Puerto para Grafana (ajustado a 3000, ya que Grafana por defecto usa 3000)
+      - "3000:3000"  # Puerto para Grafana (ajustado a 3000, ya que Grafana por defecto usa 3000)

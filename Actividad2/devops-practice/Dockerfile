@@ -17,7 +17,7 @@ COPY . .
 EXPOSE 3000
 
 # Establece una variable de entorno para el puerto
-ENV PORT=3000
+ENV PORT=3001
 
 #Comando para ejecutar la aplicacion
 CMD ["node", "src/app.js"]
