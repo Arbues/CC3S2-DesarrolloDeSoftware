@@ -1,123 +1,127 @@
 # Actividad 2 - Desarrollo de Software
 
 ## Preguntas de Reflexión
-1. ¿Qué significa "desplazar a la izquierda" en el contexto de DevSecOps y por qué es importante?
-2. Explica cómo IaC mejora la consistencia y escalabilidad en la gestión de infraestructuras.
-3. ¿Cuál es la diferencia entre monitoreo y observabilidad? ¿Por qué es crucial la observabilidad en sistemas complejos?
-4. ¿Cómo puede la experiencia del desarrollador impactar el éxito de DevOps en una organización?
-5. Describe cómo InnerSource puede ayudar a reducir silos dentro de una organización.
-6. ¿Qué rol juega la ingeniería de plataformas en mejorar la eficiencia y la experiencia del desarrollador?
+1. **¿Qué significa "desplazar a la izquierda" en el contexto de DevSecOps y por qué es importante?** Desplazar a la izquierda significa integrar medidas de seguridad desde las primeras etapas del ciclo de desarrollo, como el diseño y la codificación, en lugar de al final. Es importante porque permite detectar y corregir vulnerabilidades antes, reduciendo costos y riesgos.
+    
+2. **Explica cómo IaC mejora la consistencia y escalabilidad en la gestión de infraestructuras.** IaC automatiza la configuración y gestión de la infraestructura mediante código, asegurando que los entornos sean reproducibles y consistentes. Esto elimina errores humanos y facilita la escalabilidad, ya que los sistemas se pueden gestionar de manera más eficiente y fiable.
+    
+3. **¿Cuál es la diferencia entre monitoreo y observabilidad? ¿Por qué es crucial la observabilidad en sistemas complejos?** El monitoreo se enfoca en observar problemas predefinidos mediante métricas y alertas, mientras que la observabilidad permite entender el estado completo del sistema utilizando datos como logs, métricas y trazas. La observabilidad es crucial en sistemas complejos porque proporciona una visión profunda del comportamiento del sistema, facilitando la resolución de problemas no predefinidos.
+    
+4. **¿Cómo puede la experiencia del desarrollador impactar el éxito de DevOps en una organización?** Una buena experiencia del desarrollador, que incluye herramientas efectivas y flujos de trabajo fluidos, aumenta la productividad y satisfacción del equipo. Esto reduce silos organizacionales y mejora la colaboración, lo que es esencial para el éxito de DevOps.
+    
+5. **Describe cómo InnerSource puede ayudar a reducir silos dentro de una organización.** InnerSource permite a los desarrolladores de diferentes equipos colaborar en proyectos compartidos, promoviendo la transparencia y el intercambio de conocimientos. Esto reduce los silos organizacionales y fomenta una cultura de trabajo más abierta y colaborativa.
+    
+6. **¿Qué rol juega la ingeniería de plataformas en mejorar la eficiencia y la experiencia del desarrollador?** La ingeniería de plataformas crea herramientas y plataformas internas que permiten a los desarrolladores enfocarse en escribir código sin preocuparse por la infraestructura. Al automatizar tareas operativas, mejora la eficiencia y reduce la carga cognitiva de los desarrolladores, optimizando su experiencia y productividad.
 
-## Descripción del Proyecto
+## Documentación del Laboratorio
 
-Este proyecto forma parte del curso de Desarrollo de Software, cuyo objetivo es aplicar y comprender los conceptos clave relacionados con DevSecOps, Infraestructura como Código (IaC), y Observabilidad.
+Este documento detalla todos los pasos seguidos durante el laboratorio de la Actividad 2, utilizando las modificaciones necesarias para el correcto funcionamiento.
 
-El repositorio contiene una aplicación sencilla de Node.js con una API REST básica, pruebas automatizadas, y configuraciones de infraestructura y monitoreo. Se han implementado prácticas de seguridad y automatización usando GitHub Actions y Docker.
+### 1. Configuración del Proyecto
 
-### Estructura del Proyecto
-
-```
-.
-└── devops-practice
-    ├── Dockerfile
-    ├── docker-compose.yml
-    ├── package-lock.json
-    ├── package.json
-    ├── prometheus.yml
-    ├── src
-    │   └── app.js
-    └── tests
-        └── app.test.js
-```
-
-### Objetivos de la Actividad
-
-- **DevSecOps**: Integración de la seguridad en el ciclo de vida de desarrollo mediante análisis automatizado de vulnerabilidades.
-- **Infraestructura como Código (IaC)**: Contenerización y gestión automatizada del entorno usando Docker y Docker Compose.
-- **Observabilidad**: Configuración de herramientas de monitoreo como Prometheus y Grafana para mejorar la visibilidad del sistema.
-
-## Instrucciones para el Uso
-
-### 1. Clonar el Repositorio
+Primero, se creó el proyecto básico de Node.js con el siguiente comando:
 
 ```
-git clone https://github.com/Arbues/CC3S2-DesarrolloDeSoftware.git
-cd CC3S2-DesarrolloDeSoftware/Actividad2/devops-practice
+mkdir devops-practice
+cd devops-practice
+npm init -y
 ```
 
-### 2. Instalación de Dependencias
+Luego, se instalaron las dependencias necesarias:
 
 ```
-npm install
+npm install express jest
 ```
 
-### 3. Ejecutar la Aplicación Localmente
+### 2. Estructura del Proyecto
+
+Se crearon las carpetas y archivos necesarios para organizar el código fuente y las pruebas:
 
 ```
-node src/app.js
+mkdir src tests
+touch src/app.js tests/app.test.js
 ```
 
-La aplicación estará disponible en `http://localhost:3001`.
+El código fuente de la API en `app.js` se encuentra en la ruta `src/app.js` del repositorio [enlace aquí](https://github.com/Arbues/CC3S2-DesarrolloDeSoftware/tree/main/Actividad2/devops-practice/src/app.js), mientras que las pruebas automatizadas en `app.test.js` se encuentran en `tests/app.test.js` [enlace aquí](https://github.com/Arbues/CC3S2-DesarrolloDeSoftware/tree/main/Actividad2/devops-practice/tests/app.test.js).
+
+### 3. Implementación de la API
+
+Se implementó una API básica en Node.js con los siguientes endpoints:
+
+- GET `/`: Responde con "Hello, World!".
+- GET `/delay`: Responde después de un retraso de 2 segundos.
 
 ### 4. Pruebas Automatizadas
 
-Para ejecutar las pruebas, usa el siguiente comando:
+Las pruebas para ambos endpoints fueron implementadas en el archivo `tests/app.test.js`. Las pruebas utilizan `supertest` y validan tanto el funcionamiento del endpoint básico como el de delay.
+
+Para correr las pruebas, se utilizó el siguiente comando:
 
 ```
 npm test
 ```
 
-Las pruebas verifican el correcto funcionamiento de la API en los endpoints `/` y `/delay`.
+El archivo de configuración de los scripts de prueba (`package.json`) también fue modificado para que las pruebas se ejecuten correctamente.
 
-### 5. Contenerización con Docker
+### 5. Implementación de DevSecOps
 
-Construir la imagen de Docker:
+Se integró una herramienta de auditoría de seguridad utilizando `npm audit`. El análisis de seguridad se automatizó a través de GitHub Actions.
 
-```
-docker build -t devops-practice .
-```
-
-Correr el contenedor:
-
-```
-docker run -p 3001:3001 devops-practice
-```
-
-### 6. Usar Docker Compose para el Despliegue
-
-Para ejecutar la aplicación, junto con los servicios de Prometheus y Grafana, usa el siguiente comando:
-
-```
-docker compose up --build -d
-```
-
-Este comando ejecutará los tres servicios:
-
-- **Node.js App**: Expuesta en `http://localhost:3001`.
-- **Prometheus**: Disponible en `http://localhost:9090`.
-- **Grafana**: Disponible en `http://localhost:3000`.
-
-### 7. Auditoría de Seguridad
-
-Para realizar un análisis de seguridad de las dependencias del proyecto:
+#### Auditoría de seguridad manual:
 
 ```
 npm audit
 ```
 
-### 8. Pipeline de GitHub Actions
+#### Pipeline en GitHub Actions
 
-Se ha configurado un pipeline CI/CD en GitHub Actions que automatiza las siguientes tareas:
+El archivo de configuración del pipeline se encuentra en la ruta `.github/workflows/ci.yml` [enlace aquí](https://github.com/Arbues/CC3S2-DesarrolloDeSoftware/tree/main/Actividad2/devops-practice/.github/workflows/ci.yml).
 
-- Instalación de dependencias.
-- Ejecución de pruebas.
-- Auditoría de seguridad.
-- Gestión de contenedores con Docker.
+El pipeline realiza las siguientes tareas:
+- Instala las dependencias.
+- Ejecuta las pruebas.
+- Realiza un análisis de seguridad con `npm audit`.
+- Construye y ejecuta los contenedores de Docker.
 
-El archivo de configuración se encuentra en la ruta: `.github/workflows/ci.yml`.
+### 6. Infraestructura como Código (IaC)
 
-## Ubicación de los Archivos
+Para contenerizar la aplicación, se creó un archivo `Dockerfile`. El archivo Docker expone el puerto 3001 y configura la aplicación para ejecutarse en un entorno de producción.
 
-- **Código fuente de la aplicación**: [`devops-practice/src/app.js`](https://github.com/Arbues/CC3S2-DesarrolloDeSoftware/tree/main/Actividad2/devops-practice/src/app.js)
-- **Pruebas automatizadas**: [`devops-practice/tests/app.test.js`](https://github.com/Arbues/CC3S2-DesarrolloDeSoftware/tree/main/Actividad2/devops-practice/tests/app.test.js)
-- **Pipeline de CI/CD**: [`devops-practice/.github/workflows/ci.yml`](https://github.com/Arbues/CC3S2-DesarrolloDeSoftware/.github/workflows/ci.yml)
+Se utilizó Docker Compose para automatizar el despliegue de la aplicación y los servicios de monitoreo. El archivo `docker-compose.yml` define los servicios de la aplicación, Prometheus y Grafana, los cuales son ejecutados en sus respectivos puertos.
+
+#### Construir y correr la imagen de Docker:
+
+```
+docker build -t devops-practice .
+docker run -p 3001:3001 devops-practice
+```
+
+#### Usar Docker Compose para desplegar la aplicación:
+
+```
+docker compose up --build -d
+```
+
+Este comando ejecuta:
+- **Node.js App** en `http://localhost:3001`
+- **Prometheus** en `http://localhost:9090`
+- **Grafana** en `http://localhost:3000`
+
+### 7. Observabilidad
+
+Para implementar observabilidad, se configuraron Prometheus y Grafana. El archivo `prometheus.yml` configura a Prometheus para recolectar métricas de la aplicación Node.js, mientras que Grafana visualiza esas métricas.
+
+- Archivo de configuración de Prometheus: `prometheus.yml` [enlace aquí](https://github.com/Arbues/CC3S2-DesarrolloDeSoftware/tree/main/Actividad2/devops-practice/prometheus.yml).
+- Grafana se configuró para ejecutarse junto con Prometheus en Docker Compose.
+
+### 8. Limpieza de Docker Compose
+
+Para detener y limpiar los contenedores después de ejecutarlos, se utilizó el siguiente comando:
+
+```
+docker compose down
+```
+
+### Conclusión
+
+El laboratorio permitió aplicar conceptos clave de DevSecOps, Infraestructura como Código y Observabilidad en un entorno práctico. Se documentaron los pasos seguidos, desde la configuración del proyecto hasta la implementación de las herramientas de seguridad y monitoreo, todo ello utilizando técnicas modernas de automatización y contenerización.
